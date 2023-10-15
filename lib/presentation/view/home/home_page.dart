@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_example/core/provider/core_provider.dart';
 import 'package:todo_example/presentation/view/common/title.dart';
 import 'package:todo_example/presentation/view/common/toolbar.dart';
 import 'package:todo_example/presentation/view/todo/todo_item.dart';
 
-class HomePage extends HookConsumerWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final todos = ref.watch(filteredTodosProvider);
-    final newTodoController = useTextEditingController();
+    final newTodoController = TextEditingController();
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
